@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Alexander Elias — personal site. Coming soon." />
+  <meta name="theme-color" content="#0b0c10" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Alexander Elias — Coming Soon" />
+  <meta property="og:description" content="Personal site — coming soon." />
+  <meta property="og:type" content="website" />
+  <!-- Optional: add og:image when you have one -->
+  <!-- <meta property="og:image" content="https://alexanderelias.ca/assets/og.jpg" /> -->
+
+  <title>Alexander Elias — Coming Soon</title>
+
+  <style>
+    :root{
+      --bg:#07080b;
+      --panel:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.62);
+      --gold:#c8a85a;
+      --shadow:0 18px 60px rgba(0,0,0,.55);
+      --radius:20px;
+      --max:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 700px at 75% 20%, rgba(200,168,90,.14), transparent 55%),
+        radial-gradient(900px 600px at 20% 75%, rgba(120,140,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), #05060a 60%, #04050a);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 18px;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max);
+      position:relative;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .top{
+      display:flex;
+      gap:28px;
+      padding:28px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:240px;
+    }
+    .mark{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid rgba(200,168,90,.25);
+      background:
+        radial-gradient(18px 18px at 35% 30%, rgba(255,255,255,.18), transparent 55%),
+        linear-gradient(135deg, rgba(200,168,90,.45), rgba(255,255,255,.05));
+      box-shadow:0 12px 28px rgba(0,0,0,.45);
+    }
+    .brand h1{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:650;
+      line-height:1.2;
+    }
+    .brand p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.02em;
+    }
+
+    .pillrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      margin-top:2px;
+    }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      color:rgba(255,255,255,.72);
+      font-size:12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .pill strong{ color:rgba(255,255,255,.90); font-weight:650; }
+
+    .main{
+      padding:34px 28px 26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:26px;
+    }
+    @media (max-width: 860px){
+      .main{ grid-template-columns:1fr; }
+      .pillrow{ justify-content:flex-start; }
+    }
+
+    .headline{
+      margin:0 0 10px;
+      font-size:42px;
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    .headline span{
+      color:rgba(255,255,255,.82);
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width:56ch;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:rgba(255,255,255,.9);
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:.01em;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.20); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(200,168,90,.32), rgba(255,255,255,.06));
+      border-color: rgba(200,168,90,.32);
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(200,168,90,.42), rgba(255,255,255,.08)); }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.18);
+      border-radius:18px;
+      padding:16px;
+    }
+    .panel h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .panel p{
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    form{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    input[type="email"]{
+      flex:1 1 220px;
+      min-width: 220px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.92);
+      outline:none;
+    }
+    input::placeholder{ color:rgba(255,255,255,.45); }
+    .small{
+      margin-top:10px;
+      font-size:12px;
+      color:rgba(255,255,255,.52);
+      line-height:1.55;
+    }
+
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .link{
+      font-size:13px;
+      color:rgba(255,255,255,.80);
+      text-decoration:none;
+      border-bottom:1px solid rgba(200,168,90,.35);
+      padding-bottom:2px;
+    }
+    .link:hover{ color:white; border-bottom-color:rgba(200,168,90,.60); }
+
+    footer{
+      padding:18px 28px 22px;
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.52);
+      font-size:12px;
+    }
+    .dot{
+      display:inline-block;
+      width:6px;height:6px;
+      border-radius:99px;
+      background:rgba(200,168,90,.75);
+      margin:0 8px 1px 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="card">
+        <div class="top">
+          <div class="brand">
+            <div class="mark" aria-hidden="true"></div>
+            <div>
+              <h1>Alexander Elias</h1>
+              <p>Personal brand • projects • work</p>
+            </div>
+          </div>
+
+          <div class="pillrow">
+            <div class="pill"><strong>Launching</strong> soon</div>
+            <div class="pill">Toronto</div>
+            <div class="pill">2026</div>
+          </div>
+        </div>
+
+        <div class="main">
+          <div>
+            <h2 class="headline">Quietly building <span>something serious</span>.</h2>
+            <p class="sub">
+              This site will be the home for my work, projects, and releases — built with intention.
+              If you want first access, drop your email below.
+            </p>
+
+            <div class="cta">
+              <!-- Primary CTA scrolls to the form -->
+              <a class="btn primary" href="#notify">Notify me</a>
+
+              <!-- Optional: point to your fragrance + agency when ready -->
+              <a class="btn" href="https://parfumsdeelias.com" target="_blank" rel="noopener">Parfums de Elias</a>
+              <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            </div>
+
+            <p class="small">
+              No spam. One email when it’s live.
+            </p>
+          </div>
+
+          <aside class="panel" id="notify">
+            <h3>Get the launch email</h3>
+            <p>Enter your email and I’ll send a single update when the site goes live.</p>
+
+            <!-- OPTION A: Replace action with your Formspree endpoint to make it work -->
+            <!-- Example: action="https://formspree.io/f/xxxxxxx" -->
+            <form action="#" method="post" onsubmit="return fakeSubmit(event)">
+              <input required type="email" name="email" placeholder="you@example.com" />
+              <button class="btn primary" type="submit">Join list</button>
+            </form>
+
+            <div class="links">
+              <!-- Replace with your real links -->
+              <a class="link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+              <a class="link" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="link" href="mailto:hello@alexanderelias.ca">Email</a>
+            </div>
+
+            <p class="small" id="msg" aria-live="polite"></p>
+          </aside>
+        </div>
+
+        <footer>
+          <div>© <span id="year"></span> Alexander Elias</div>
+          <div>Crafted with intention <span class="dot"></span> alexanderelias.ca</div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fake submit for demo mode (remove if using Formspree/real backend)
+    function fakeSubmit(e){
+      e.preventDefault();
+      const msg = document.getElementById("msg");
+      msg.textContent = "You’re on the list. I’ll email you when it’s live.";
+      return false;
+    }
+  </script>
+</body>
+</html>
