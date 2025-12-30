@@ -184,7 +184,6 @@ body{
   height: 14px;
   display: block;
   object-fit: contain;
-  filter: invert(1);
 }
 
 /* RIGHT CARD */
