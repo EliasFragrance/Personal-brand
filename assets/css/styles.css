@@ -88,7 +88,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system;
   color: var(--charcoal);
 
-  background-image: url("assets/img/background.png");
+  background-image: url("/assets/img/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
