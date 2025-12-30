@@ -84,57 +84,21 @@ body{
   height: 1px;
   background: currentColor;
   opacity: .9;
-}
 
-/* =========================
-   GLOBAL BACKGROUND (ADD HERE)
-========================= */
-html, body {
-  height: 100%;
-}
 
+}
 body {
-  background-color: var(--cream);
-  background-image: url("assets/img/background.png");
+  background-image: 
+    linear-gradient(
+      rgba(31,31,31,0.06),
+      rgba(31,31,31,0.06)
+    ),
+    url("assets/img/background.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
-  color: var(--charcoal);
+  background-repeat: no-repeat;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(247, 245, 242, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  z-index: -1;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("assets/img/grain.png");
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* =========================
-   TYPOGRAPHY
-========================= */
-h1, h2, h3 {
-  font-family: "Playfair Display", serif;
-}
-
-/* =========================
-   LAYOUT / COMPONENTS
-========================= */
-/* header, sections, cards, etc */
-
 
 /* PAGE WRAPPER */
 .page{
