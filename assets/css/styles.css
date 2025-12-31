@@ -183,27 +183,6 @@ button:focus-visible{
   color: rgba(247,245,242,.88);
 }
 
-.hero-cta{
-  display: flex;
-  gap: 12px;
-  margin-bottom: 22px;
-  flex-wrap: wrap;
-}
-
-.hero-quote{
-  margin: 0;
-  max-width: 60ch;
-  font-size: 16px;
-  line-height: 1.7;
-  color: rgba(247,245,242,.78);
-}
-
-.hero-quote-author{
-  display: block;
-  margin-top: 6px;
-  color: rgba(247,245,242,.62);
-}
-
 /* ---------- Buttons ---------- */
 .btn{
   display: inline-flex;
