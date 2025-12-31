@@ -234,50 +234,74 @@ button:focus-visible{
   border-color: rgba(255,255,255,0.45);
 }
 
-/* ---------- Hero card (upgraded) ---------- */
+/* =========================
+   Luxury Hero Card (drop-in)
+   ========================= */
+
+/* ---------- Hero card ---------- */
 .hero-card{
+  position: relative;
   background:
-    radial-gradient(1200px 500px at 20% -10%, rgba(255,255,255,0.10), transparent 55%),
-    radial-gradient(900px 500px at 110% 10%, rgba(255,255,255,0.06), transparent 55%),
+    radial-gradient(900px 420px at 20% 10%, rgba(255,255,255,0.08), rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.18)),
     var(--charcoal);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: calc(var(--radius) + 2px);
   overflow: hidden;
 
-  /* richer depth */
+  /* more “gallery lighting”, less “blob shadow” */
   box-shadow:
-    0 30px 80px rgba(0,0,0,.45),
-    0 1px 0 rgba(255,255,255,.06) inset;
+    0 28px 70px rgba(0,0,0,0.55),
+    0 8px 18px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+
   font-family: "Times New Roman", Times, serif;
-
-  transform: translateZ(0);
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
-.hero-card:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.20);
-  box-shadow:
-    0 40px 110px rgba(0,0,0,.55),
-    0 1px 0 rgba(255,255,255,.07) inset;
+/* subtle top glaze + edge vignette */
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 38%),
+    radial-gradient(120% 90% at 50% 0%, rgba(0,0,0,0), rgba(0,0,0,0.35) 70%);
+  opacity: .9;
 }
 
-/* Top area looks more “glass card” */
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  /* micro contrast “film” */
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.015),
+    rgba(255,255,255,0.015) 1px,
+    rgba(0,0,0,0.015) 2px
+  );
+  opacity: .25;
+  mix-blend-mode: overlay;
+}
+
+/* ---------- Top ---------- */
 .card-top{
-  padding: 24px 22px 16px;
+  position: relative;
+  padding: 26px 24px 16px;
   text-align: center;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.42),
-    rgba(0,0,0,0.22)
-  );
+  background:
+    radial-gradient(700px 240px at 50% 0%, rgba(255,255,255,0.10), rgba(255,255,255,0) 55%),
+    rgba(0,0,0,0.32);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+/* ---------- Avatar ---------- */
 .avatar{
   width: 88px;
   height: 88px;
@@ -286,92 +310,126 @@ button:focus-visible{
 
   background: url("/assets/img/avatar.png") center / cover no-repeat;
 
-  /* “medallion” feel */
-  border: 1px solid rgba(255,255,255,0.18);
+  /* luxury ring */
+  border: 1px solid rgba(255,255,255,0.16);
   box-shadow:
-    0 10px 28px rgba(0,0,0,.55),
-    0 0 0 4px rgba(255,255,255,.05);
+    0 12px 28px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.20);
+  position: relative;
 }
 
+.avatar::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius: inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18), rgba(255,255,255,0) 55%);
+  border: 1px solid rgba(176,141,87,0.22); /* muted brass halo */
+  opacity: .9;
+}
+
+/* ---------- Typography ---------- */
 .card-name{
   font-weight: 700;
   font-size: 30px;
-  letter-spacing: .2px;
-  line-height: 1.05;
+  letter-spacing: .3px;
+  color: rgba(247,245,242,0.96);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
 }
 
 .card-role{
-  margin-top: 6px;
-  font-size: 17px;
-  letter-spacing: .2px;
-  color: rgba(247,245,242,.78);
+  margin-top: 7px;
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(247,245,242,0.70);
 }
 
+/* ---------- Actions ---------- */
 .card-actions{
   display: flex;
   gap: 10px;
   justify-content: center;
-  padding: 14px 18px 8px;
+  padding: 14px 20px 8px;
   flex-wrap: wrap;
 }
 
-/* Slightly tighter section spacing + cleaner typography */
-.card-section{ padding: 16px 22px 20px; }
+/* ---------- Section ---------- */
+.card-section{
+  position: relative;
+  padding: 18px 24px 20px;
+}
 
 .card-section-title{
   font-size: 12px;
-  letter-spacing: .20em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(247,245,242,.68);
+  color: rgba(247,245,242,0.62);
   margin: 0 0 14px;
 }
 
-/* Meters feel higher-end */
+/* ---------- Meters ---------- */
 .meter{ margin-bottom: 14px; }
 
 .meter-label{
   font-size: 14px;
-  color: rgba(247,245,242,.88);
-  margin-bottom: 8px;
+  color: rgba(247,245,242,0.88);
+  margin-bottom: 9px;
 }
 
 .meter-bar{
   height: 10px;
   border-radius: 999px;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.10);
   overflow: hidden;
-  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset;
+
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,0.55),
+    inset 0 -1px 0 rgba(255,255,255,0.06);
 }
 
-/* Use accent instead of hardcoded red + add a subtle shine */
 .meter-bar span{
   display: block;
   height: 100%;
   width: 50%;
   border-radius: 999px;
 
+  /* brass + lacquer gradient */
   background:
-    linear-gradient(to bottom, rgba(255,255,255,0.22), rgba(255,255,255,0.00)),
-    color-mix(in srgb, var(--accent) 92%, transparent);
-  box-shadow: 0 0 14px rgba(0,0,0,.25);
+    linear-gradient(90deg,
+      rgba(176,141,87,0.95),
+      rgba(210,178,120,0.92)
+    );
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
+/* ---------- Bottom ---------- */
 .card-bottom{
+  position: relative;
   padding: 16px 22px;
-  border-top: 1px solid rgba(255,255,255,0.10);
+  border-top: 1px solid rgba(255,255,255,0.08);
   text-align: center;
 
-  background: rgba(0,0,0,0.16);
+  background: rgba(0,0,0,0.22);
 }
 
 .card-link{
-  color: rgba(247,245,242,.88);
-  text-underline-offset: 3px;
+  color: rgba(247,245,242,.86);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(176,141,87,0.35);
+  padding-bottom: 2px;
 }
+
 .card-link:hover{
-  color: var(--accent);
+  color: rgba(210,178,120,0.95);
+  border-bottom-color: rgba(210,178,120,0.75);
 }
+
 
 /* =========================
    Responsive + Mobile optimization (desktop-first)
