@@ -344,43 +344,42 @@ button:focus-visible{
 }
 
 /* =========================
-   Mobile optimization (desktop-first patch)
-   Paste at END of file
+   Mobile optimization (desktop-first)
+   Put this at the VERY END of the file
    ========================= */
 
-/* 1) Make page padding fluid instead of hard 110px */
+/* Fluid page padding instead of fixed 110px */
 :root{
   --page-pad-x: clamp(16px, 6vw, 110px);
   --page-pad-y: clamp(18px, 3.5vw, 28px);
 }
 
-/* 2) Header spacing scales down smoothly */
+/* Make header inner padding scale down smoothly */
 .header-inner{
   padding-left: clamp(14px, 4vw, 34px);
   padding-right: clamp(14px, 4vw, 34px);
 }
 
-/* 3) Nav: allow wrapping + tighter spacing by default */
+/* Allow nav to wrap earlier (prevents overflow) */
 .nav{
   flex-wrap: wrap;
   row-gap: 6px;
-  column-gap: 10px;
-
-  /* keep your style but prevent insane width on smaller screens */
+  column-gap: 12px;
   letter-spacing: clamp(0.10em, 1.2vw, 0.34em);
   font-size: clamp(13px, 1.7vw, 18px);
 }
 
 .nav a{
   padding: 10px 8px;
+  white-space: nowrap;
 }
 
-/* 4) Hero: prevent “too tall” feel on mobile browsers */
+/* Use small-viewport height to avoid mobile browser UI jumpiness */
 .hero{
   min-height: calc(100svh - var(--header-h) - (var(--page-pad-y) * 2));
 }
 
-/* 5) Tablet and below: stack layout + tame typography */
+/* Tablet and below: stack hero */
 @media (max-width: 900px){
   .hero{
     grid-template-columns: 1fr;
@@ -394,58 +393,45 @@ button:focus-visible{
   }
 }
 
+/* Phones: make header AUTO height so stacked content fits */
 @media (max-width: 620px){
 
-  /* Header container tightens vertically */
+  .site-header{
+    height: auto;            /* KEY FIX: header can grow */
+    padding: 10px 0;         /* gives breathing room */
+  }
+
   .header-inner{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
-  /* Stack brand + nav */
-  .header-inner{
-    flex-direction: column;
-    align-items: center;
+  .brand{
+    margin-top: 0;
   }
 
-  /* Nav fits fully inside header */
+  .brand img{
+    height: 32px;            /* keeps logo balanced */
+  }
+
   .nav{
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap;
-
-    column-gap: 12px;
-    row-gap: 6px;
-
     font-size: 14px;
     letter-spacing: 0.12em;
   }
 
-  .nav a{
-    padding: 6px 6px;
-    white-space: nowrap;
-  }
-
-  /* Slightly smaller logo for balance */
-  .brand img{
-    height: 32px;
+  .nav a.active::after{
+    bottom: -6px;            /* tighten underline spacing */
   }
 }
 
-    scrollbar-width: none; /* Firefox */
-  }
-  .nav::-webkit-scrollbar{ display:none; }
-
-  .nav a{
-    white-space: nowrap;
-  }
-}
-
-/* 7) Small phones: adjust brand + hero text */
+/* Small phones: tame typography */
 @media (max-width: 520px){
-  .brand img{ height: 34px; } /* your current 46px is big for a tight header */
   .hero-title{ font-size: clamp(34px, 10vw, 56px); }
   .hero-subtitle{ font-size: 18px; }
 }
+
 
