@@ -1,28 +1,24 @@
 /* =========================
-   AlexanderElias.ca — main styles
-   Clean rewrite (cream + charcoal + tasteful red)
+   AlexanderElias.ca — main styles (clean)
+   Cream + charcoal + tasteful red
    ========================= */
 
 /* ---------- Tokens ---------- */
 :root{
-  --cream:#F7F5F2;
+  --cream: #F7F5F2;
   --cream-2:#FAFAF7;
 
   --charcoal:#1F1F1F;
   --charcoal-2:#2A2A2A;
 
-  --accent:#B33A3A;         /* tasteful red hover */
+  --accent:#B33A3A;
   --line: rgba(0,0,0,0.08);
 
-  --glass: rgba(247,245,242,0.92);
-  --glass-border: rgba(255,255,255,0.12);
+  --glass-border: rgba(255,255,255,0.14);
   --glass-fill: rgba(255,255,255,0.06);
 
   --radius: 18px;
 
-  --max: 1120px;
-
-  /* Layout */
   --header-h: 94px;
   --page-pad-y: 28px;
   --page-pad-x: 18px;
@@ -42,14 +38,14 @@ body{
   color: var(--charcoal);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* Background image (GitHub Pages friendly path) */
+  /* Background */
   background-color: var(--cream);
-  background-image: url("/assets/img/background.png");
+  background-image: url("assets/img/background.png"); /* use relative path for GitHub Pages */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Helps the page “fill the screen” (no extra scroll unless content actually needs it) */
+  /* Allows header + page to fill viewport cleanly */
   display: flex;
   flex-direction: column;
 }
@@ -57,36 +53,40 @@ body{
 img{ max-width: 100%; height: auto; display: block; }
 
 a{ color: inherit; text-decoration: none; }
+
 a:focus-visible,
 button:focus-visible{
   outline: 2px solid rgba(179,58,58,0.6);
   outline-offset: 3px;
 }
 
-/* ---------- Header (FULL-WIDTH + spaced nav) ---------- */
+/* ---------- Header ---------- */
 .site-header{
   position: sticky;
   top: 0;
   z-index: 1000;
 
   height: var(--header-h);
-
-  background: var(--charcoal);              /* charcoal header */
+  background: var(--charcoal);
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
+.site-header.scrolled{
+  background: var(--charcoal);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
 .header-inner{
-  width: 100%;                               /* FULL WIDTH */
-  max-width: none;                           /* remove the container */
   height: 100%;
-  padding: 0 34px;                           /* edge breathing room */
+  width: 100%;
+  padding: 0 34px;
 
   display: flex;
   align-items: center;
   gap: 26px;
 }
 
-/* Logo far left + vertically aligned */
+/* Brand (logo left) */
 .brand{
   display: flex;
   align-items: center;
@@ -95,125 +95,68 @@ button:focus-visible{
 }
 
 .brand img{
-  height: 54px;                              /* bigger logo */
+  height: 52px;
   width: auto;
-  display: block;
 }
 
-/* Nav stretches to the right + evenly spaced items */
+/* Nav (spreads across remaining width) */
 .nav{
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;             /* spread evenly */
-  gap: 0;                                    /* let space-evenly do it */
+  justify-content: space-evenly;
+  gap: 0;
 
-  color: var(--cream);                       /* cream words */
+  color: var(--cream);
   font-family: "Playfair Display", "Libre Baskerville", serif;
 
-  font-size: 18px;                           /* larger */
-  letter-spacing: 0.38em;                    /* more spaced */
+  font-size: 18px;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  font-weight: 800;                          /* bold */
+  font-weight: 700;
 }
 
 .nav a{
   color: var(--cream);
   padding: 12px 10px;
-}
-
-.nav a:hover{ color: rgba(247,245,242,0.85); }
-
-/* underline for active page */
-.nav a.active::after{
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  margin-top: 10px;
-  background: var(--cream);
-  opacity: 0.8;
-}
-
-/* ===== LOGO LEFT + LEVEL ===== */
-.brand{
-  display: flex;
-  align-items: center;        /* aligns image with text */
-  flex-shrink: 0;             /* prevents squishing */
-}
-
-.brand img{
-  height: 44px;               /* large + premium */
-  width: auto;
-  display: block;
-}
-
-/* ===== NAV FULL-WIDTH DISTRIBUTION ===== */
-.nav{
-  flex: 1;                                /* takes remaining width */
-  display: flex;
-  justify-content: space-between;        /* spreads items evenly */
-  align-items: center;
-
-  font-family: "Playfair Display", "Libre Baskerville", Times New Roman;
-  font-size: 17px;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-}
-
-.nav a{
-  font-weight: 600;   /* strong but elegant */
-}
-
-.nav a{
-  padding: 14px 6px;
   line-height: 1;
   position: relative;
+  transition: color .15s ease;
 }
 
-.nav a.active::after{
-  bottom: -10px;
-}
-.nav a{
-  position: relative;
-  padding: 14px 6px;
-  line-height: 1;
-  font-weight: 600;
+.nav a:hover{
+  color: rgba(247,245,242,0.78);
 }
 
-.nav a.active::after{
-  bottom: -10px;
-}
-
-.nav a:hover{ color: var(--accent); }
-
+/* Active underline */
 .nav a.active::after{
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -8px;
   width: 100%;
   height: 1px;
   background: currentColor;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 /* ---------- Page wrapper ---------- */
 .page{
   width: 100%;
-  max-width: none;              /* FULL WIDTH */
   margin: 0;
   padding: var(--page-pad-y) var(--page-pad-x);
 
-  flex: 1;
-  display: block;               /* don’t force children layout here */
+  flex: 1;              /* this is what makes the content stretch */
+  display: block;
 }
 
 /* ---------- Hero (index) ---------- */
 .hero{
   width: 100%;
-  min-height: calc(100dvh - var(--header-h) - (var(--page-pad-y)*2));      /* simple, full-screen */
-  
+
+  /* Fill screen minus header + padding */
+  min-height: calc(100dvh - var(--header-h) - (var(--page-pad-y) * 2));
+
   display: grid;
   grid-template-columns: 1.2fr 0.9fr;
   gap: 36px;
@@ -274,18 +217,14 @@ button:focus-visible{
   background: var(--glass-fill);
 
   color: var(--cream);
-  text-decoration: none;
 
-  transition:
-    transform .15s ease,
-    background .15s ease,
-    border-color .15s ease;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
 }
 
 .btn:hover{
   transform: translateY(-1px);
   background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.22);
 }
 
 .btn.primary{ background: rgba(255,255,255,0.12); }
@@ -331,8 +270,7 @@ button:focus-visible{
   border-radius: 999px;
   margin: 0 auto 14px;
 
-  background: url("/assets/img/avatar.png") center / cover no-repeat;
-
+  background: url("assets/img/avatar.png") center / cover no-repeat;
   border: 1px solid rgba(255,255,255,0.14);
 }
 
@@ -386,7 +324,7 @@ button:focus-visible{
   display: block;
   height: 100%;
   width: 50%;
-  background: rgba(179,58,58,0.9);
+  background: rgba(179,58,58,0.90);
   border-radius: 999px;
 }
 
@@ -399,38 +337,9 @@ button:focus-visible{
 .card-link{ color: rgba(247,245,242,.86); }
 .card-link:hover{ color: var(--accent); }
 
-/* ===== HEADER COLOR OVERRIDE ===== */
-.site-header{
-  background: var(--charcoal);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.site-header.scrolled{
-  background: var(--charcoal);     /* keep it charcoal even on scroll */
-  backdrop-filter: none;           /* optional: removes glass blur */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-/* Nav + brand text */
-.site-header,
-.site-header a{
-  color: var(--cream);
-}
-
-/* Hover + active states */
-.nav a:hover{
-  color: rgba(247,245,242,0.75);
-}
-
-.nav a.active::after{
-  background: var(--cream);
-  opacity: 0.9;
-}
-
-
 /* ---------- Responsive ---------- */
 @media (max-width: 900px){
-  .nav{ gap: 18px; font-size: 13px; }
+  .nav{ font-size: 13px; letter-spacing: 0.18em; }
   .hero{
     grid-template-columns: 1fr;
     gap: 22px;
@@ -439,6 +348,8 @@ button:focus-visible{
 }
 
 @media (max-width: 520px){
-  .nav{ letter-spacing: 0.16em; }
+  .header-inner{ padding: 0 18px; }
+  .brand img{ height: 46px; }
+  .nav{ letter-spacing: 0.14em; }
   .hero-title{ font-size: clamp(38px, 10vw, 58px); }
 }
