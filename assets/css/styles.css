@@ -93,8 +93,8 @@ button:focus-visible{
   padding: 0 var(--page-pad-x);
 
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: center;        /* 🔑 vertical alignment */
+  gap: 40px;
 }
 
 /* ===== LOGO LEFT & LARGE ===== */
