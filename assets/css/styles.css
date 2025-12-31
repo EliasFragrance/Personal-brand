@@ -21,7 +21,7 @@
 
   --header-h: 86px;
   --page-pad-y: 28px;
-  --page-pad-x: 40px;
+  --page-pad-x: 90px;
 }
 
 /* ---------- Base / Reset ---------- */
@@ -252,11 +252,13 @@ button:focus-visible{
 
 /* ---------- Hero card ---------- */
 .hero-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  border: 1px solid var(--glass-border);
+  background: var(--charcoal);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+
 }
 
 .card-top{
