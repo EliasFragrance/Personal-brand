@@ -384,18 +384,18 @@ button:focus-visible{
 }
 
 /* =========================
-   Phones: header auto height so stacked content fits
-   + mobile header polish (centered nav + larger logo)
+   Mobile header polish
+   Center everything properly
    ========================= */
 @media (max-width: 620px){
+
   .site-header{
-    height: auto;            /* KEY FIX: header can grow */
-    padding: 10px 0;         /* gives breathing room */
+    height: auto;
+    padding: 10px 0;
   }
 
   .header-inner{
     height: auto;
-    padding: 0 18px;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -407,39 +407,33 @@ button:focus-visible{
   }
 
   .brand img{
-    height: 38px;            /* final chosen size */
+    height: 38px; /* your “more confident logo” size */
   }
 
+  /* KEY: force the nav row(s) to center as a group */
   .nav{
-    width: 100%;
-    justify-content: center;
+    display: flex;          /* ensures centering rules apply */
+    width: 100%;            /* gives a full line to center within */
+    justify-content: center;/* center the items as a group */
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 12px;          /* (row gap, column gap) */
+    margin: 0 auto;         /* extra safety */
     text-align: center;
     font-size: 14px;
     letter-spacing: 0.12em;
   }
 
   .nav a{
+    white-space: nowrap;
     text-align: center;
   }
 
   .nav a.active::after{
-    bottom: -6px;            /* tighten underline spacing */
+    bottom: -6px;
   }
 }
 
-/* =========================
-   Small phones: tame typography
-   ========================= */
-@media (max-width: 520px){
-  .hero-title{ font-size: clamp(34px, 10vw, 56px); }
-  .hero-subtitle{ font-size: 18px; }
-}
-
-/* Extra small */
 @media (max-width: 420px){
-  .brand img{
-    height: 36px;
-  }
+  .brand img{ height: 36px; }
 }
-
